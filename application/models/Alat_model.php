@@ -1,13 +1,13 @@
 <?php
 
-class Mahasiswa_model extends CI_Model
+class Alat_model extends CI_Model
 {
-    public function get($id = null, $limit = 5, $offset = 0)
+    public function get($id = null)
     {
         if($id === null){
-            return $this->db->get('mahasiswa', $limit, $offset)->result();
+            return $this->db->get('tb_alat')->result();
         }else{
-            return $this->db->get_where('mahasiswa', ['id' => $id])->result_array();
+            return $this->db->get_where('tb_alat', ['kode' => $id])->result_array();
         }
         
     }
@@ -15,7 +15,7 @@ class Mahasiswa_model extends CI_Model
     public function delete($id)
   {
     try {
-      $this->db->delete('mahasiswa', ['id' => $id]);
+      $this->db->delete('tb_alat', ['kode' => $id]);
       $error = $this->db->error();
       if (!empty($error['code'])) {
         throw new Exception('Terjadi kesalahan: ' . $error['message']);
@@ -30,7 +30,7 @@ class Mahasiswa_model extends CI_Model
   public function add($data)
   {
     try {
-      $this->db->insert('mahasiswa', $data);
+      $this->db->insert('tb_alat', $data);
       $error = $this->db->error();
       if (!empty($error['code'])) {
         throw new Exception('Terjadi kesalahan: ' . $error['message']);
@@ -45,7 +45,7 @@ class Mahasiswa_model extends CI_Model
   public function update($id, $data)
   {
     try {
-      $this->db->update('mahasiswa', $data, ['id' => $id]);
+      $this->db->update('tb_alat', $data, ['kode' => $id]);
       $error = $this->db->error();
       if (!empty($error['code'])) {
         throw new Exception('Terjadi kesalahan: ' . $error['message']);
