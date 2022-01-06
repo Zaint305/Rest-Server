@@ -48,6 +48,7 @@ class Alat extends RestController
 
     Public function index_post(){
         $data = [
+            'kode' => $this->post('kode', true),
             'alat' => $this->post('Alat', true),
             'harga' => $this->post('harga', true),
             'waktu_sewa' => $this->post('waktu_sewa', true)
